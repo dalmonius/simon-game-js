@@ -75,28 +75,39 @@ $(document).keypress("click", function(){
 $("#green").click("click", function(){
     var greenSound = new Audio("./sounds/green.mp3");
     greenSound.play();
-    buttonPressedAnimation();
+    e = this.id
+    buttonPressedAnimation(e);
 });
 
 $("#red").click("click", function(){
     var redSound = new Audio("./sounds/red.mp3");
     redSound.play();
+    e = this.id
+    buttonPressedAnimation(e);
 });
 
 $("#yellow").click("click", function(){
     var yellowSound = new Audio("./sounds/yellow.mp3");
     yellowSound.play();
+    e = this.id
+    buttonPressedAnimation(e);
 });
 
 $("#blue").click("click", function(){
     var blueSound = new Audio("./sounds/blue.mp3");
     blueSound.play();
+    e = this.id
+    buttonPressedAnimation(e);
 });
 
 // button pressed animation
-function buttonPressedAnimation() {
-    $("#green").addClass("pressed");
+function buttonPressedAnimation(e) {
+    $("#" + e).addClass("pressed");
     setTimeout(function(){
-        $("#green").removeClass("pressed");
+        $("#" + e).removeClass("pressed");
     }, 100)
 }
+
+// need to create a variable for these selectors.
+// feels wrong, feels like I'm typing, copying and pasting way too much. How can I improve this?
+
