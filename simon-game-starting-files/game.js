@@ -21,35 +21,8 @@ now I have to understand how to do that with javascript, and I also can use jQue
 */
 // now that I'm on my on with this, i think to myself: will I work forever inside a function?
 
-$(document).keypress("click", function(){
-    $("body").css("backgroundColor", "#011");
-    setTimeout(function(){
-        $("body").css("backgroundColor", "#011F3F")}, 100);
-    $("h1").text("Level 1");
-});
-
 // Well, I made this animation which makes the background slightly darker for 0.1s
 // now, how do I make it play a sequence on it's own?
-
-$("#green").click("click", function(){
-    var greenSound = new Audio("./sounds/green.mp3");
-    greenSound.play();
-});
-
-$("#red").click("click", function(){
-    var redSound = new Audio("./sounds/red.mp3");
-    redSound.play();
-});
-
-$("#yellow").click("click", function(){
-    var yellowSound = new Audio("./sounds/yellow.mp3");
-    yellowSound.play();
-});
-
-$("#blue").click("click", function(){
-    var blueSound = new Audio("./sounds/blue.mp3");
-    blueSound.play();
-});
 
 // I can tell that I've learned a lot doing that all on my own.
 // because when you're on your own, when you are all alone
@@ -87,4 +60,43 @@ $("#blue").click("click", function(){
 4. add + 1 to the sequence... indefinitely.
 */
 
-// changes
+// should I work with arrays?
+var simonSequence = []; 
+
+// press a key to start
+$(document).keypress("click", function(){
+    $("body").css("backgroundColor", "#011");
+    setTimeout(function(){
+        $("body").css("backgroundColor", "#011F3F")}, 100);
+    $("h1").text("Level 1");
+});
+
+// sound and animation clicks
+$("#green").click("click", function(){
+    var greenSound = new Audio("./sounds/green.mp3");
+    greenSound.play();
+    buttonPressedAnimation();
+});
+
+$("#red").click("click", function(){
+    var redSound = new Audio("./sounds/red.mp3");
+    redSound.play();
+});
+
+$("#yellow").click("click", function(){
+    var yellowSound = new Audio("./sounds/yellow.mp3");
+    yellowSound.play();
+});
+
+$("#blue").click("click", function(){
+    var blueSound = new Audio("./sounds/blue.mp3");
+    blueSound.play();
+});
+
+// button pressed animation
+function buttonPressedAnimation() {
+    $("#green").addClass("pressed");
+    setTimeout(function(){
+        $("#green").removeClass("pressed");
+    }, 100)
+}
