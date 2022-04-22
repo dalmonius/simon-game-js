@@ -8,7 +8,6 @@ the first step is to understand how the game works.
 
 first, the page is freezed, nothing happens unless you press a key to start playing.
 second, as you press a key, the game starts.
-
 the game will make a sequence and the player has to do the same thing.
 the sequence increases by one, randomly.
 every time the player finishes a full sequence without errors, he scores a point
@@ -88,3 +87,4 @@ $("#blue").click("click", function(){
 4. add + 1 to the sequence... indefinitely.
 */
 
+// changes
