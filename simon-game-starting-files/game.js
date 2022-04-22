@@ -71,29 +71,29 @@ $(document).keypress("click", function(){
     $("h1").text("Level 1");
 });
 
-// sound and animation clicks
-$("#green").click("click", function(){
+// sound and animation clicks, event listeners
+var green = $("#green").click("click", function(){
     var greenSound = new Audio("./sounds/green.mp3");
     greenSound.play();
     e = this.id
     buttonPressedAnimation(e);
 });
 
-$("#red").click("click", function(){
+var red = $("#red").click("click", function(){
     var redSound = new Audio("./sounds/red.mp3");
     redSound.play();
     e = this.id
     buttonPressedAnimation(e);
 });
 
-$("#yellow").click("click", function(){
+var yellow = $("#yellow").click("click", function(){
     var yellowSound = new Audio("./sounds/yellow.mp3");
     yellowSound.play();
     e = this.id
     buttonPressedAnimation(e);
 });
 
-$("#blue").click("click", function(){
+var blue = $("#blue").click("click", function(){
     var blueSound = new Audio("./sounds/blue.mp3");
     blueSound.play();
     e = this.id
@@ -111,3 +111,28 @@ function buttonPressedAnimation(e) {
 // need to create a variable for these selectors.
 // feels wrong, feels like I'm typing, copying and pasting way too much. How can I improve this?
 
+// create computer sequence
+var computerSequence = [];
+
+function computerSequenceGenerator() {
+    var randomNumber = Math.floor(Math.random()*4);
+    switch (randomNumber){
+        case 0:
+            return "green";
+        case 1:
+            return "yellow";
+        case 2:
+            return "red";
+        case 3:
+            return "blue";
+        break // deleted all the "breaks" since vscode renders it as inaccessible. Code still works. Probably not good practice.
+    }
+}
+
+// make the computer click a button by itself
+function computerClick(color) {
+    color.trigger("click");
+}
+
+// make the computer play a sequence
+// how?
