@@ -116,23 +116,26 @@ var computerSequence = [];
 
 function computerSequenceGenerator() {
     var randomNumber = Math.floor(Math.random()*4);
-    switch (randomNumber){
-        case 0:
-            return "green";
-        case 1:
-            return "yellow";
-        case 2:
-            return "red";
-        case 3:
-            return "blue";
-        break // deleted all the "breaks" since vscode renders it as inaccessible. Code still works. Probably not good practice.
+    if (randomNumber === 0) {
+        return "green";
+    } else if (randomNumber === 1) {
+        return "red";
+    } else if (randomNumber === 2) {
+        return "yellow";
+    } else {
+        return "blue";
     }
 }
 
 // make the computer click a button by itself
 function computerClick(color) {
-    color.trigger("click");
+    $("." + color).trigger("click");
 }
 
-// make the computer play a sequence
-// how?
+// computerClick(computerSequenceGenerator());
+// now this function call can create random clicks.
+// now how can I log them and reproduce them?
+
+// game start
+
+
