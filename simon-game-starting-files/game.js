@@ -127,6 +127,17 @@ function computerSequenceGenerator() {
     }
 }
 
+// another way of doing the same thing is
+// to use a random number to select inside an array
+var allColors = ["red", "blue", "green", "yellow"];
+var gamePattern = [];
+function nextSequence() {
+    var randomNumber = Math.floor(Math.random()*4);
+    randomChosenColor = allColors[randomNumber];
+    return randomChosenColor;
+}
+gamePattern.push(nextSequence());
+
 // make the computer click a random button by itself
 function computerClick(color) {
     $("." + color).trigger("click");
