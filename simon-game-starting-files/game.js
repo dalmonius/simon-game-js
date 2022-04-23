@@ -114,19 +114,6 @@ function buttonPressedAnimation(e) {
 // create computer sequence
 var computerSequence = [];
 
-function computerSequenceGenerator() {
-    var randomNumber = Math.floor(Math.random()*4);
-    if (randomNumber === 0) {
-        return "green";
-    } else if (randomNumber === 1) {
-        return "red";
-    } else if (randomNumber === 2) {
-        return "yellow";
-    } else {
-        return "blue";
-    }
-}
-
 // another way of doing the same thing is
 // to use a random number to select inside an array
 var allColors = ["red", "blue", "green", "yellow"];
