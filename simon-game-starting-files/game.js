@@ -127,7 +127,7 @@ function computerSequenceGenerator() {
     }
 }
 
-// make the computer click a button by itself
+// make the computer click a random button by itself
 function computerClick(color) {
     $("." + color).trigger("click");
 }
@@ -135,7 +135,3 @@ function computerClick(color) {
 // computerClick(computerSequenceGenerator());
 // now this function call can create random clicks.
 // now how can I log them and reproduce them?
-
-// game start
-
-
