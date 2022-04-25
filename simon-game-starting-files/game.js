@@ -23,23 +23,46 @@ function buttonPressed(color){
     setTimeout(function(){
         $("#" + color).removeClass("pressed");
     }, 100);
-    playSound(color);
 }
 
 // buttonPressed(gamePattern[0]);
 
-for (i = 0; i < (allColors.length); i++) {
-    $("#" + allColors[i]).click("click", function(){
-    // userClickedPattern.push(this.id);                no need for this here
-    // console.log(userClickedPattern);
-    buttonPressed(this.id);
-    });
+function clickHandler (){
+    for (i = 0; i < (allColors.length); i++) {
+        $("#" + allColors[i]).click("click", function(){
+        buttonPressed(this.id);
+        userClickedPattern.push(this.id);
+        playSound(this.id);
+        });
+    }
+}
+
+function showUser (color){
+    buttonPressed(color);               // Maybe I need a for loop here, to play the entire sequence
+    playSound(color);                   // passing functions as arguments? maybe there's the missing piece
+}
+
+function checkSequence(){
+    if (userClickedPattern === gamePattern) {
+        nextSequence();
+    } else {
+        alert("game over!");
+    }
 }
 
 // game start
 
 $(document).keypress("keypress", function(){
-    buttonPressed(nextSequence());
+    gamePattern.push(nextSequence());
+    console.log(gamePattern);
+    showUser(gamePattern);
     $(document).off();
 });
 
+/*
+I am somewhat annoyed by outside noise because
+you can find the answer for a problem in your floodlight consciousness
+but if your floodlight consciousness is filled with distracting noise
+then you wont be as efficient in finding the answer
+and that's a bit annoying because I want to find the answer
+ */
