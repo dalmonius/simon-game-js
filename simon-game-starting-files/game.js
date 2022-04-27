@@ -32,11 +32,13 @@ function clickListener(){
     userClickedPattern.push(this.id);
     playSound(this.id);
     console.log(userClickedPattern);
-    if (gamePattern.toString() === userClickedPattern.toString()){
-        nextSequence();
-    } else if (gamePattern.toString() != userClickedPattern.toString()){
-        alert("oh shit");
-    }
+    if (userClickedPattern.length === gamePattern.length){
+        if (gamePattern.toString() === userClickedPattern.toString()){
+            nextSequence();
+            for (i = 0; i < (gamePattern.length); i++)
+            showUser(gamePattern[i]);
+        }
+    }   
 }
 
 function clickHandler(){
@@ -50,8 +52,6 @@ function showUser(color){
     playSound(color);                   // passing functions as arguments? maybe there's the missing piece
 }
 
-
-
 // game start
 
 $(document).keypress("keypress", function(){
@@ -62,5 +62,10 @@ $(document).keypress("keypress", function(){
 
 clickHandler();
 
-// to compare two arrays loop through them and compare every value
-
+/*
+nextSequence()
+loop 0 to max length
+user plays sequence from 0 to max length
+if true loop
+false break
+*/
