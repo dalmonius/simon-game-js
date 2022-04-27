@@ -1,4 +1,3 @@
-//  starting declarations
 var buttonColours = ["green", "red", "yellow", "blue"];
 var gamePattern = [];
 var userClickedPattern = [];
@@ -27,7 +26,17 @@ function checkAnswer(currentLevel){
             }, 1444);
         }
     } else {
-        console.log("wrong")
+        playSound("wrong");
+        $("body").addClass("game-over");
+        setTimeout(function(){
+            $("body").removeClass("game-over");
+        }, 200);
+        $("h1").text("Game over! Press any key to play again");
+        starOver();
+        $(document).keydown("keydown", function(){
+            nextSequence();
+            $(document).off();
+        });
     }
 }
 
@@ -52,4 +61,9 @@ function buttonPressed(color){
     setTimeout(function(){
         $("#" + color).removeClass("pressed");
     }, 100);
+}
+
+function starOver(){
+    level = 0;
+    gamePattern = [];
 }
