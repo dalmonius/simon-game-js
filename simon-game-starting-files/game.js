@@ -8,8 +8,10 @@ var level = 0;
 function nextSequence() {
     var randomNumber = Math.floor(Math.random()*4);
     randomChosenColor = allColors[randomNumber];
+    gamePattern.push(randomChosenColor);
     level++;
     $("h1").text("Level " + level);
+    console.log(gamePattern);
     return randomChosenColor;
 }
 
@@ -25,44 +27,40 @@ function buttonPressed(color){
     }, 100);
 }
 
-// buttonPressed(gamePattern[0]);
-
-function clickHandler (){
-    for (i = 0; i < (allColors.length); i++) {
-        $("#" + allColors[i]).click("click", function(){
-        buttonPressed(this.id);
-        userClickedPattern.push(this.id);
-        playSound(this.id);
-        });
+function clickListener(){
+    buttonPressed(this.id);
+    userClickedPattern.push(this.id);
+    playSound(this.id);
+    console.log(userClickedPattern);
+    if (gamePattern.toString() === userClickedPattern.toString()){
+        nextSequence();
+    } else if (gamePattern.toString() != userClickedPattern.toString()){
+        alert("oh shit");
     }
 }
 
-function showUser (color){
+function clickHandler(){
+    for (i = 0; i < (allColors.length); i++) {
+        $("#" + allColors[i]).click("click", clickListener);
+    }
+}
+
+function showUser(color){
     buttonPressed(color);               // Maybe I need a for loop here, to play the entire sequence
     playSound(color);                   // passing functions as arguments? maybe there's the missing piece
 }
 
-function checkSequence(){
-    if (userClickedPattern === gamePattern) {
-        nextSequence();
-    } else {
-        alert("game over!");
-    }
-}
+
 
 // game start
 
 $(document).keypress("keypress", function(){
-    gamePattern.push(nextSequence());
-    console.log(gamePattern);
+    nextSequence();
     showUser(gamePattern);
     $(document).off();
 });
 
-/*
-I am somewhat annoyed by outside noise because
-you can find the answer for a problem in your floodlight consciousness
-but if your floodlight consciousness is filled with distracting noise
-then you wont be as efficient in finding the answer
-and that's a bit annoying because I want to find the answer
- */
+clickHandler();
+
+// to compare two arrays loop through them and compare every value
+
